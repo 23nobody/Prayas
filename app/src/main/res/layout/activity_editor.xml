@@ -41,14 +41,14 @@
 
             <!-- Name field -->
             <EditText
-                android:id="@+id/edit_pet_name"
+                android:id="@+id/edit_name"
                 android:hint="Name"
                 android:inputType="textCapWords"
                 style="@style/EditorFieldStyle" />
 
             <!-- Breed field -->
             <EditText
-                android:id="@+id/edit_pet_breed"
+                android:id="@+id/edit_roll"
                 android:hint="Roll No."
                 android:inputType="textCapWords"
                 style="@style/EditorFieldStyle" />
@@ -105,7 +105,7 @@
 
             <!-- Weight field -->
             <EditText
-                android:id="@+id/edit_pet_weight"
+                android:id="@+id/edit_batch"
                 android:hint="2018"
                 android:inputType="number"
                 style="@style/EditorFieldStyle" />
