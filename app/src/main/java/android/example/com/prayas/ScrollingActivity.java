@@ -1,22 +1,16 @@
 package android.example.com.prayas;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
 
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import java.util.ArrayList;
 
 public class ScrollingActivity extends AppCompatActivity {
 
@@ -24,30 +18,17 @@ public class ScrollingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-
-        // Create an adapter that knows which fragment should be shown on each page
-        SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(this,getSupportFragmentManager());
-
-        // Set the adapter onto the view pager
-        viewPager.setAdapter(adapter);
-
-        tabLayout.setupWithViewPager(viewPager);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ScrollingActivity.this, EditorActivity.class);
-                startActivity(intent);
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
-
-
-
-
     }
 
     @Override

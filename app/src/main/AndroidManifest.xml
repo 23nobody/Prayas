@@ -9,6 +9,15 @@
         android:roundIcon="@mipmap/prayas_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Set_3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Set_2" />
+        <activity android:name=".Set_1" />
         <activity
             android:name=".ScrollingActivity"
             android:label="@string/app_name"

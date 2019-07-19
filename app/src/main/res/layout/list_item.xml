@@ -35,7 +35,6 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:padding="16dp"
-        android:id="@+id/edit_member"
         android:src="@drawable/baseline_create_black_24" />
 
 </RelativeLayout>
