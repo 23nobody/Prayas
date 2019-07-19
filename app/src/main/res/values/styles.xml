@@ -43,5 +43,11 @@
     <style name="CategoryTabTextAppearance" parent="TextAppearance.Design.Tab">
     <item name="android:textColor">#A8A19E</item>
     </style>
+    <!-- Theme of the editor -->
+    <style name="EditorTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/editorColorPrimary</item>
+        <item name="colorPrimaryDark">@color/editorColorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
 </resources>
