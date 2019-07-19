@@ -17,10 +17,12 @@ public class EditorActivity extends AppCompatActivity {
     private EditText mRollEdit;
     private EditText mBatchEdit;
     private Spinner mGenderSpinner;
+    private Spinner mSetSpinner;
     public final int GENDER_UNKNOWN=0;
     public final int GENDER_MALE=1;
     public final int GENDER_FEMALE=2;
     private int mGender = GENDER_UNKNOWN;
+    private int mSet = 7;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class EditorActivity extends AppCompatActivity {
         mRollEdit = (EditText) findViewById(R.id.edit_roll);
         mBatchEdit = (EditText) findViewById(R.id.edit_batch);
         mGenderSpinner = (Spinner) findViewById(R.id.spinner_gender);
+        mSetSpinner= (Spinner) findViewById(R.id.spinner_set);
         setupSpinner();
 
     }
@@ -66,6 +69,37 @@ public class EditorActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 mGender = GENDER_UNKNOWN;
+            }
+        });
+        ArrayAdapter setSpinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.array_set_options, android.R.layout.simple_spinner_item);
+
+        // Specify dropdown layout style - simple list view with 1 item per line
+        setSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+
+        // Apply the adapter to the spinner
+        mSetSpinner.setAdapter(setSpinnerAdapter);
+
+        // Set the integer mSelected to the constant values
+        mSetSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selection = (String) parent.getItemAtPosition(position);
+                if (!TextUtils.isEmpty(selection)) {
+                    if (selection.equals("SET-1")) {
+                        mSet = 7;
+                    } else if (selection.equals(getString(R.string.gender_female))) {
+                        mSet = 8;
+                    } else {
+                        mSet = 9;
+                    }
+                }
+            }
+
+            // Because AdapterView is an abstract class, onNothingSelected must be defined
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                mSet = 7;
             }
         });
     }

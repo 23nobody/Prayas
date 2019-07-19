@@ -6,4 +6,9 @@
         <item>@string/gender_male</item>
         <item>@string/gender_female</item>
     </string-array>
+    <string-array name="array_set_options">
+        <item>SET-1</item>
+        <item>SET-2</item>
+        <item>SET-3</item>
+    </string-array>
 </resources>
