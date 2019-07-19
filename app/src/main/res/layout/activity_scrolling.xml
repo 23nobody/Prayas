@@ -36,12 +36,27 @@
     <include layout="@layout/content_scrolling" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@drawable/baseline_person_add_white_24" />
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="SET"
+       android:layout_marginTop="200dp"
+       android:id="@+id/spintext"/>
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="20dp"
+       android:id="@+id/spin" >
+
+    </Spinner>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
