@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 public class ScrollingActivity extends AppCompatActivity {
 
     @Override
@@ -42,6 +44,10 @@ public class ScrollingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+
     }
 
     @Override

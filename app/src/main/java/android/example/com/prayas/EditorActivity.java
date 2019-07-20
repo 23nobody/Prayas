@@ -24,9 +24,9 @@ public class EditorActivity extends AppCompatActivity {
     private EditText mBatchEdit;
     private Spinner mGenderSpinner;
     private Spinner mSetSpinner;
-    public final int GENDER_UNKNOWN=0;
-    public final int GENDER_MALE=1;
-    public final int GENDER_FEMALE=2;
+    public final static int GENDER_UNKNOWN=0;
+    public final static int GENDER_MALE=1;
+    public final static int GENDER_FEMALE=2;
     private int mGender = GENDER_UNKNOWN;
     private int mSet = 7;
     private boolean mStudentChanged = false;
