@@ -19,22 +19,12 @@
             android:textColor="#2B3D4D"
             android:id="@+id/roll"
             android:paddingLeft="8dp"/>
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/student_name"
-            android:fontFamily="sans-serif"
-            android:textAppearance="?android:textAppearanceSmall"
-            android:textColor="#AEB6BD"
-            tools:text="Shreyansh Sahu"
-            android:layout_marginLeft="40dp"/>
+            android:hint="enster your name"
+            android:id="@+id/code"/>
     </LinearLayout>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:padding="16dp"
-        android:src="@drawable/baseline_create_black_24" />
 
 </RelativeLayout>
