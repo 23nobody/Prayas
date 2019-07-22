@@ -49,7 +49,7 @@
             <!-- Breed field -->
             <EditText
                 android:id="@+id/edit_roll"
-                android:hint="Roll No."
+                android:hint="Roll Number"
                 android:inputType="textCapWords"
                 style="@style/EditorFieldStyle" />
         </LinearLayout>
