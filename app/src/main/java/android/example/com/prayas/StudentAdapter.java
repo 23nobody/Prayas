@@ -20,19 +20,10 @@ import java.util.List;
 import static androidx.core.content.ContextCompat.startActivity;
 
 public class StudentAdapter extends ArrayAdapter<Student> {
-    public StudentAdapter(Context context, ArrayList<Student> objects) {
-        super(context,R.layout.list_item, objects);
+    public StudentAdapter(Context context, List<Student> objects) {
+        super(context,0, objects);
     }
 
-   /* public StudentAdapter(Set1 set1, int list_item, List<Student> students) {
-        super(set1, list_item, students);
-        //this.set1=set1;
-
-    }*/
-   private static class ViewHolder {
-       TextView txtName;
-       CheckBox checkBox;
-   }
 
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {

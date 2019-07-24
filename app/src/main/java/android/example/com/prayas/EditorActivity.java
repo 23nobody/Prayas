@@ -46,8 +46,8 @@ public class EditorActivity extends AppCompatActivity {
     private StorageReference mStorageReference;
     private boolean mStudentChanged = false;
     private StudentAdapter mStudentAdapter;
-    private ListView mListView;
-    private Button nbtn;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class EditorActivity extends AppCompatActivity {
         mNameEdit = (EditText) findViewById(R.id.edit_name);
         mRollEdit = (EditText) findViewById(R.id.edit_roll);
         mBatchEdit = (EditText) findViewById(R.id.edit_batch);
-        mListView=findViewById(R.id.studentListView);
+
         mGenderSpinner = (Spinner) findViewById(R.id.spinner_gender);
         mSetSpinner= (Spinner) findViewById(R.id.spinner_set);
         setupSpinner();
@@ -65,24 +65,15 @@ public class EditorActivity extends AppCompatActivity {
         mFirebaseDtabase=FirebaseDatabase.getInstance();
         mFirebaseStorage=FirebaseStorage.getInstance();
         mStudentDatabaseReference=mFirebaseDtabase.getReference().child("student");
+
        // mStorageReference=mFirebaseStorage.getReference().child("child photos");
 
         mBatchEdit.setOnTouchListener(mTouchListener);
         mRollEdit.setOnTouchListener(mTouchListener);
         mGenderSpinner.setOnTouchListener(mTouchListener);
         mNameEdit.setOnTouchListener(mTouchListener);
-        nbtn=findViewById(R.id.btn);
 
-        nbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addStudents();
-            }
-        });
-
-
-
-      /*  List<Student> students = new ArrayList<>();
+        /*  List<Student> students = new ArrayList<>();
         mStudentAdapter = new StudentAdapter(this, R.layout.list_item, students);
         mListView.setAdapter(mStudentAdapter);*/
 
@@ -91,22 +82,26 @@ public class EditorActivity extends AppCompatActivity {
     {
         String studentName=mNameEdit.getText().toString();
         String studentRollno=mRollEdit.getText().toString();
-        String set=mSetSpinner.getSelectedItem().toString();
-        Integer ii=mSetSpinner.getSelectedItemPosition();
+
+        String set;
+        if(mSet==7)
+            set="SET-1";
+        else if(mSet==8)
+            set="SET-2";
+        else
+            set="SET-3";
 
         if(!TextUtils.isEmpty(studentName) && !TextUtils.isEmpty(studentRollno) && !TextUtils.isEmpty(set))
         {
-           String id=mStudentDatabaseReference.push().getKey();
-           Student student=new Student(id,studentName,studentRollno,set);
+            DatabaseReference localRef = mStudentDatabaseReference.getRef().child(set);
 
-           mStudentDatabaseReference.child(id).setValue(student);
-           mNameEdit.setText("");
-           mRollEdit.setText("");
-           mSetSpinner.setSelection(ii);
-          // t.setText(set);
+           Student student=new Student(studentName,studentRollno,mSet);
+           localRef.push().setValue(student);
+
+
         }
         else
-            Toast.makeText(EditorActivity.this,"plz enter",Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditorActivity.this,"Please enter credentials",Toast.LENGTH_SHORT).show();
     }
     private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
         @Override
@@ -166,7 +161,7 @@ public class EditorActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(selection)) {
                     if (selection.equals("SET-1")) {
                         mSet = 7;
-                    } else if (selection.equals(getString(R.string.gender_female))) {
+                    } else if (selection.equals("SET-2")) {
                         mSet = 8;
                     } else {
                         mSet = 9;
@@ -194,8 +189,9 @@ public class EditorActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to a click on the "Save" menu option
             case R.id.action_save:
-                // Save pet to database
-                saveStudent();
+                // Save Student to database
+                addStudents();
+//                saveStudent();
                 // Exit activity
                 finish();
                 return true;
@@ -231,9 +227,9 @@ public class EditorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void saveStudent() {
-
-    }
+//    private void saveStudent() {
+//
+//    }
     private void showDeleteConfirmationDialog() {
         // Create an AlertDialog.Builder and set the message, and click listeners
         // for the postivie and negative buttons on the dialog.
