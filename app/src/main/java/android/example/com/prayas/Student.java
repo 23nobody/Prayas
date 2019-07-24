@@ -7,6 +7,8 @@ public class Student {
     //private int gender;
     private int set;
     //private int batch;
+
+    public Student(){}
     public Student(String name,String roll,int set){
        // this.batch = batch;
        // this.gender = gender;

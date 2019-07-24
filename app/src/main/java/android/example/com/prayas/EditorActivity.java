@@ -46,8 +46,8 @@ public class EditorActivity extends AppCompatActivity {
     private StorageReference mStorageReference;
     private boolean mStudentChanged = false;
     private StudentAdapter mStudentAdapter;
-    private ListView mListView;
-    private Button nbtn;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class EditorActivity extends AppCompatActivity {
         mNameEdit = (EditText) findViewById(R.id.edit_name);
         mRollEdit = (EditText) findViewById(R.id.edit_roll);
         mBatchEdit = (EditText) findViewById(R.id.edit_batch);
-        mListView=findViewById(R.id.list);
+
         mGenderSpinner = (Spinner) findViewById(R.id.spinner_gender);
         mSetSpinner= (Spinner) findViewById(R.id.spinner_set);
         setupSpinner();
@@ -72,18 +72,8 @@ public class EditorActivity extends AppCompatActivity {
         mRollEdit.setOnTouchListener(mTouchListener);
         mGenderSpinner.setOnTouchListener(mTouchListener);
         mNameEdit.setOnTouchListener(mTouchListener);
-//        nbtn=findViewById(R.id.btn);
-//
-//        nbtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                addStudents();
-//            }
-//        });
 
-
-
-      /*  List<Student> students = new ArrayList<>();
+        /*  List<Student> students = new ArrayList<>();
         mStudentAdapter = new StudentAdapter(this, R.layout.list_item, students);
         mListView.setAdapter(mStudentAdapter);*/
 
@@ -101,8 +91,6 @@ public class EditorActivity extends AppCompatActivity {
         else
             set="SET-3";
 
-
-
         if(!TextUtils.isEmpty(studentName) && !TextUtils.isEmpty(studentRollno) && !TextUtils.isEmpty(set))
         {
             DatabaseReference localRef = mStudentDatabaseReference.getRef().child(set);
@@ -113,7 +101,7 @@ public class EditorActivity extends AppCompatActivity {
 
         }
         else
-            Toast.makeText(EditorActivity.this,"plz enter",Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditorActivity.this,"Please enter credentials",Toast.LENGTH_SHORT).show();
     }
     private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
         @Override

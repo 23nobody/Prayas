@@ -14,12 +14,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 import static androidx.core.content.ContextCompat.startActivity;
 
 public class StudentAdapter extends ArrayAdapter<Student> {
-    public StudentAdapter(Context context, ArrayList<Student> objects) {
+    public StudentAdapter(Context context, List<Student> objects) {
         super(context,0, objects);
     }
 
