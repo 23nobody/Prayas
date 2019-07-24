@@ -65,6 +65,7 @@ public class EditorActivity extends AppCompatActivity {
         mFirebaseDtabase=FirebaseDatabase.getInstance();
         mFirebaseStorage=FirebaseStorage.getInstance();
         mStudentDatabaseReference=mFirebaseDtabase.getReference().child("student");
+
        // mStorageReference=mFirebaseStorage.getReference().child("child photos");
 
         mBatchEdit.setOnTouchListener(mTouchListener);
@@ -91,19 +92,25 @@ public class EditorActivity extends AppCompatActivity {
     {
         String studentName=mNameEdit.getText().toString();
         String studentRollno=mRollEdit.getText().toString();
-        String set=mSetSpinner.getSelectedItem().toString();
-        Integer ii=mSetSpinner.getSelectedItemPosition();
+
+        String set;
+        if(mSet==7)
+            set="SET-1";
+        else if(mSet==8)
+            set="SET-2";
+        else
+            set="SET-3";
+
+
 
         if(!TextUtils.isEmpty(studentName) && !TextUtils.isEmpty(studentRollno) && !TextUtils.isEmpty(set))
         {
-           String id=mStudentDatabaseReference.push().getKey();
-           Student student=new Student(id,studentName,studentRollno,set);
+            DatabaseReference localRef = mStudentDatabaseReference.getRef().child(set);
 
-           mStudentDatabaseReference.child(id).setValue(student);
-           mNameEdit.setText("");
-           mRollEdit.setText("");
-           mSetSpinner.setSelection(ii);
-          // t.setText(set);
+           Student student=new Student(studentName,studentRollno,mSet);
+           localRef.push().setValue(student);
+
+
         }
         else
             Toast.makeText(EditorActivity.this,"plz enter",Toast.LENGTH_SHORT).show();
@@ -166,7 +173,7 @@ public class EditorActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(selection)) {
                     if (selection.equals("SET-1")) {
                         mSet = 7;
-                    } else if (selection.equals(getString(R.string.gender_female))) {
+                    } else if (selection.equals("SET-2")) {
                         mSet = 8;
                     } else {
                         mSet = 9;

@@ -3,22 +3,19 @@ package android.example.com.prayas;
 public class Student {
     private String name;
     private String roll;
-    private String studentId;
+
     //private int gender;
-    private String set;
+    private int set;
     //private int batch;
-    public Student(String studentId,String name,String roll,String set){
+    public Student(String name,String roll,int set){
        // this.batch = batch;
        // this.gender = gender;
-        this.studentId=studentId;
+
         this.name = name;
         this.roll = roll;
         this.set = set;
     }
-    public String getStudentId()
-    {
-        return studentId;
-    }
+
 
     public String getName() {
         return name;
@@ -27,7 +24,7 @@ public class Student {
     public String getRoll() {
         return roll;
     }
-    public String getSet() {
+    public int getSet() {
         return set;
     }
 
