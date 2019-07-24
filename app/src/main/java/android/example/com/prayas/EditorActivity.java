@@ -11,12 +11,23 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EditorActivity extends AppCompatActivity {
     private EditText mNameEdit;
@@ -28,8 +39,15 @@ public class EditorActivity extends AppCompatActivity {
     public final static int GENDER_MALE=1;
     public final static int GENDER_FEMALE=2;
     private int mGender = GENDER_UNKNOWN;
+    private FirebaseDatabase mFirebaseDtabase;
+    private DatabaseReference mStudentDatabaseReference;
     private int mSet = 7;
+    private FirebaseStorage mFirebaseStorage;
+    private StorageReference mStorageReference;
     private boolean mStudentChanged = false;
+    private StudentAdapter mStudentAdapter;
+    private ListView mListView;
+    private Button nbtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,15 +57,56 @@ public class EditorActivity extends AppCompatActivity {
         mNameEdit = (EditText) findViewById(R.id.edit_name);
         mRollEdit = (EditText) findViewById(R.id.edit_roll);
         mBatchEdit = (EditText) findViewById(R.id.edit_batch);
+        mListView=findViewById(R.id.studentListView);
         mGenderSpinner = (Spinner) findViewById(R.id.spinner_gender);
         mSetSpinner= (Spinner) findViewById(R.id.spinner_set);
         setupSpinner();
         mSetSpinner.setOnTouchListener(mTouchListener);
+        mFirebaseDtabase=FirebaseDatabase.getInstance();
+        mFirebaseStorage=FirebaseStorage.getInstance();
+        mStudentDatabaseReference=mFirebaseDtabase.getReference().child("student");
+       // mStorageReference=mFirebaseStorage.getReference().child("child photos");
+
         mBatchEdit.setOnTouchListener(mTouchListener);
         mRollEdit.setOnTouchListener(mTouchListener);
         mGenderSpinner.setOnTouchListener(mTouchListener);
         mNameEdit.setOnTouchListener(mTouchListener);
+        nbtn=findViewById(R.id.btn);
 
+        nbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addStudents();
+            }
+        });
+
+
+
+      /*  List<Student> students = new ArrayList<>();
+        mStudentAdapter = new StudentAdapter(this, R.layout.list_item, students);
+        mListView.setAdapter(mStudentAdapter);*/
+
+    }
+    public void addStudents()
+    {
+        String studentName=mNameEdit.getText().toString();
+        String studentRollno=mRollEdit.getText().toString();
+        String set=mSetSpinner.getSelectedItem().toString();
+        Integer ii=mSetSpinner.getSelectedItemPosition();
+
+        if(!TextUtils.isEmpty(studentName) && !TextUtils.isEmpty(studentRollno) && !TextUtils.isEmpty(set))
+        {
+           String id=mStudentDatabaseReference.push().getKey();
+           Student student=new Student(id,studentName,studentRollno,set);
+
+           mStudentDatabaseReference.child(id).setValue(student);
+           mNameEdit.setText("");
+           mRollEdit.setText("");
+           mSetSpinner.setSelection(ii);
+          // t.setText(set);
+        }
+        else
+            Toast.makeText(EditorActivity.this,"plz enter",Toast.LENGTH_SHORT).show();
     }
     private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
         @Override
