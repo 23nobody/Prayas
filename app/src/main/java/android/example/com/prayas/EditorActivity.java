@@ -57,7 +57,7 @@ public class EditorActivity extends AppCompatActivity {
         mNameEdit = (EditText) findViewById(R.id.edit_name);
         mRollEdit = (EditText) findViewById(R.id.edit_roll);
         mBatchEdit = (EditText) findViewById(R.id.edit_batch);
-        mListView=findViewById(R.id.studentListView);
+        mListView=findViewById(R.id.list);
         mGenderSpinner = (Spinner) findViewById(R.id.spinner_gender);
         mSetSpinner= (Spinner) findViewById(R.id.spinner_set);
         setupSpinner();
@@ -71,14 +71,14 @@ public class EditorActivity extends AppCompatActivity {
         mRollEdit.setOnTouchListener(mTouchListener);
         mGenderSpinner.setOnTouchListener(mTouchListener);
         mNameEdit.setOnTouchListener(mTouchListener);
-        nbtn=findViewById(R.id.btn);
-
-        nbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addStudents();
-            }
-        });
+//        nbtn=findViewById(R.id.btn);
+//
+//        nbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                addStudents();
+//            }
+//        });
 
 
 
@@ -194,8 +194,9 @@ public class EditorActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to a click on the "Save" menu option
             case R.id.action_save:
-                // Save pet to database
-                saveStudent();
+                // Save Student to database
+                addStudents();
+//                saveStudent();
                 // Exit activity
                 finish();
                 return true;
@@ -231,9 +232,9 @@ public class EditorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void saveStudent() {
-
-    }
+//    private void saveStudent() {
+//
+//    }
     private void showDeleteConfirmationDialog() {
         // Create an AlertDialog.Builder and set the message, and click listeners
         // for the postivie and negative buttons on the dialog.
