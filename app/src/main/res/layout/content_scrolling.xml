@@ -6,7 +6,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/list"
         android:orientation="vertical"
-        tools:context=".ScrollingActivity"
+
+    tools:context=".ScrollingActivity"
+    tools:listitem="@layout/list_item"
 
 
-        />
+    />
