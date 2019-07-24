@@ -52,6 +52,7 @@ class Set2 extends Fragment {
                     Student student =
                             dataSnapshot.getValue(Student.class);
                     mStudentAdapter.add(student);
+                    mStudentAdapter.notifyDataSetChanged();
                 }
 
                 @Override
