@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "49643954324",
+    "firebase_url": "https://attendancerecord-prayass.firebaseio.com",
+    "project_id": "attendancerecord-prayass",
+    "storage_bucket": "attendancerecord-prayass.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49643954324:android:afc1470c3b4c7d7e",
+        "android_client_info": {
+          "package_name": "android.example.com.prayas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49643954324-rgbhp96rt74n1fdgrdkd7ekkrgh6kprb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "android.example.com.prayas",
+            "certificate_hash": "c26e1d37e16c9e80d9a8ae2c4e127666352a3c9f"
+          }
+        },
+        {
+          "client_id": "49643954324-svfs9s6d185dhluavpcp1c1mi6rpak2k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7dDyj8dgJdocCvj7bPjOXqPKUxC9SdrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49643954324-svfs9s6d185dhluavpcp1c1mi6rpak2k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
