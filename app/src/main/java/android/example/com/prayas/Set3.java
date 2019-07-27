@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Set3 extends Fragment {
+    public static ArrayList<String> selectedStudents3 = new ArrayList<>();
     public Set3() {
     }
     private FirebaseDatabase mDatabase;
