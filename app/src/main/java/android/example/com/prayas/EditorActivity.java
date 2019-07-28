@@ -65,6 +65,7 @@ public class EditorActivity extends AppCompatActivity {
         mFirebaseDtabase=FirebaseDatabase.getInstance();
         mFirebaseStorage=FirebaseStorage.getInstance();
         mStudentDatabaseReference=mFirebaseDtabase.getReference().child("student");
+       // mStudentDatabaseReference=mFirebaseDtabase.getReference().child("Date");
 
        // mStorageReference=mFirebaseStorage.getReference().child("child photos");
 
