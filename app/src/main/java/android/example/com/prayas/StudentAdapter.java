@@ -45,6 +45,17 @@ public class StudentAdapter extends ArrayAdapter<Student> {
             public void onClick(View view) {
                 Intent intent = new Intent(parent.getContext(),EditorActivity.class);
                 intent.putExtra("roll", Objects.requireNonNull(getItem(position)).getRoll());
+                int set = getItem(position).getSet();
+                String sSet;
+                if(set==7)
+                sSet="SET-1";
+                else if(set==8)
+                    sSet="SET-2";
+                else
+                    sSet="SET-3";
+                intent.putExtra("set",sSet);
+                intent.putExtra("name",getItem(position).getName());
+
                 startActivity(parent.getContext(),intent,null);
             }
         });

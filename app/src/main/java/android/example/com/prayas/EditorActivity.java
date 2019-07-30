@@ -3,6 +3,7 @@ package android.example.com.prayas;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -53,7 +54,9 @@ public class EditorActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
-        setTitle("Edit Member");
+        Intent intent = getIntent();
+        Bundle extras=intent.getExtras();
+
         mNameEdit = (EditText) findViewById(R.id.edit_name);
         mRollEdit = (EditText) findViewById(R.id.edit_roll);
         mBatchEdit = (EditText) findViewById(R.id.edit_batch);
@@ -62,6 +65,24 @@ public class EditorActivity extends AppCompatActivity {
         mSetSpinner= (Spinner) findViewById(R.id.spinner_set);
         setupSpinner();
         mSetSpinner.setOnTouchListener(mTouchListener);
+        if(extras==null){
+            setTitle("Add a member");
+            invalidateOptionsMenu();
+        }
+        else {
+            setTitle("Edit Member");
+            mNameEdit.setText(extras.getString("name"));
+            mRollEdit.setText(extras.getString("roll"));
+            String sSet =extras.getString("set");
+            int set;
+            if(sSet=="SET-1")
+                set=1;
+            else if(sSet=="SET-2")
+                set=2;
+            else
+                set=3;
+            mSetSpinner.setSelection(set);
+        }
         mFirebaseDtabase=FirebaseDatabase.getInstance();
         mFirebaseStorage=FirebaseStorage.getInstance();
         mStudentDatabaseReference=mFirebaseDtabase.getReference().child("student");
@@ -303,5 +324,16 @@ public class EditorActivity extends AppCompatActivity {
 
         // Show dialog that there are unsaved changes
         showUnsavedChangesDialog(discardButtonClickListener);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+         super.onPrepareOptionsMenu(menu);
+         Bundle extras = getIntent().getExtras();
+         if(extras==null){
+             MenuItem menuItem = menu.findItem(R.id.action_delete);
+             menuItem.setVisible(false);
+         }
+         return true;
     }
 }

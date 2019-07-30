@@ -32,7 +32,7 @@ public class ScrollingActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-
+        viewPager.setOffscreenPageLimit(3);
         // Create an adapter that knows which fragment should be shown on each page
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(this,getSupportFragmentManager());
 
