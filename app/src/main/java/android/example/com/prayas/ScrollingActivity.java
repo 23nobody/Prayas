@@ -30,7 +30,9 @@ public class ScrollingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-
+        Set1.selectedStudents1.clear();
+        Set2.selectedStudents2.clear();
+        Set3.selectedStudents3.clear();
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setOffscreenPageLimit(3);
         // Create an adapter that knows which fragment should be shown on each page
