@@ -75,12 +75,12 @@ public class EditorActivity extends AppCompatActivity {
             mRollEdit.setText(extras.getString("roll"));
             String sSet =extras.getString("set");
             int set;
-            if(sSet=="SET-1")
+            if(sSet.compareTo("SET-1")==0)
+                set=0;
+            else if(sSet.compareTo("SET-2")==0)
                 set=1;
-            else if(sSet=="SET-2")
-                set=2;
             else
-                set=3;
+                set=2;
             mSetSpinner.setSelection(set);
         }
         mFirebaseDtabase=FirebaseDatabase.getInstance();
