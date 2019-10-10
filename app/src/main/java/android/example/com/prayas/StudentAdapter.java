@@ -36,7 +36,9 @@ public class StudentAdapter extends ArrayAdapter<Student> {
         CheckBox roll = (CheckBox)convertView.findViewById(R.id.roll);
         TextView name = (TextView)convertView.findViewById(R.id.student_name);
         ImageView editIcon = (ImageView)convertView.findViewById(R.id.edit_member);
-
+        if(roll.isChecked()){
+            roll.toggle();
+        }
           Student student = getItem(position);
         roll.setText(Objects.requireNonNull(student).getRoll());
         name.setText(student.getName());
