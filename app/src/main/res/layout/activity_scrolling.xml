@@ -52,7 +52,7 @@
                 style="@style/CategoryTab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/primary_color"
+                android:background="@color/colorAccent"
                 app:tabMode="fixed" />
         </com.google.android.material.appbar.AppBarLayout>
 
